@@ -1,0 +1,17 @@
+{%extends 'accounts/base.html'%}
+{%load crispy_forms_tags%}
+{%block content%}
+<div class="body m-5">
+<div class="container">
+  <div class="jumbotron">
+    <legend style=color:maroon;>Checkout Process</legend>
+    <hr>
+<form method="POST" action="" enctype="multipart/form-data">
+{%csrf_token%}
+{{form|crispy}}
+<button class="btn btn-success">Check Out</button>
+  </form>
+    </div>
+  </div>
+  </div>
+{%endblock%}

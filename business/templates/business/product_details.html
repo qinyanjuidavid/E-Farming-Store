@@ -1,0 +1,37 @@
+{%extends 'accounts/base.html'%}
+{%block content%}
+<div class="body p-4">
+<div class="container p-4">
+<div class="row">
+
+<div class=" card col-sm-6 border-white">
+<img src="{{item.image.url}}" height="700" alt="E-farm">
+  </div>
+  <div class="col-sm-6">
+  <div class="card border-dark">
+    <div class="card-header border-dark">
+    <div class="item_name m-2">
+    <legend>{{item.item_name}}</legend>
+    </div>
+    </div>
+    <div class="card-body">
+    <div class="price m-2">
+  <b>Price:</b> ${{item.price}}
+  </div>
+  <div class="category m-2">
+  <b>Category:</b> {{item.category}}
+  </div>
+  <div class="descirption m-2">
+  <b>Description:</b> {{item.description}}
+  </div>
+  <div class="buttons m-3" align=center>
+  <a href="{%url 'business:add_to_cart' item.id%}"><button class="btn btn-primary p-2">+Add To Cart</button></a>
+  <a href="{%url 'business:remove' item.id%}"><button class="btn btn-danger p-2">Remove From Cart</button></a>
+  </div>
+  </div>
+    </div>
+    </div>
+  </div>
+  </div>
+  </div>
+{%endblock%}

@@ -1,0 +1,23 @@
+{%extends 'accounts/base.html'%}
+{%load crispy_forms_tags%}
+{%block content%}
+<body style=background-color:lightgrey;>
+<div class="container p-5">
+  <div class="card border-success">
+    <div class="card-header" style=background-color:forestgreen;>
+      <legend class="text-white" >CREATE A FREE ACCOUNT</legend>
+      </div>
+      <div class="card-body col-sm-10">
+<form method="POST" action="" enctype="multipart/form-data">
+{%csrf_token%}
+{{form|crispy}}
+<button class="btn btn-outline-success col-sm-3">Register</button>
+
+  </form>
+</div>
+  </div>
+  </div>
+
+  </body>
+
+{%endblock%}

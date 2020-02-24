@@ -1,0 +1,37 @@
+{%extends 'accounts/base.html'%}
+{%block content%}
+<div class="body p-4">
+<div class="jumbotron" align=right style=background-color:forestgreen;>
+  <div class="container">
+    <div class="card border-success text-white" style=background-color:forestgreen;>
+      <div class="row">
+      <div class="image col-sm-8">
+        <img src="{{image.}}"
+        </div>
+  <div class="head col-sm-4" align=center>
+<h3>There are many ways<br> in which IOT Makes Agriculture<br> Market Efficient. </h3>
+<br>
+<h5>Daily Farming Foundation.</h5>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="container">
+  <h1 class="text-muted" align=center>WELCOME TO E-FARMING PORTAL</h1>
+  <hr>
+  {%for item in item%}
+<div class="card col-sm-3 p-1">
+  <div class="card-header">
+<h3 class="text-danger">Offer</h3>
+    </div>
+  <img src="{{item.image.url}}" height="300" alt="E-farm">
+  <a href="{%url 'business:details' item.id%}"><button class="btn btn-outline-info col-sm-12 m-1 p-1">View Product</button>
+
+  </div>
+  {%endfor%}
+  </div>
+{%endblock%}

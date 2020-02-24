@@ -1,0 +1,67 @@
+{%extends 'accounts/base.html'%}
+{%load icons%}
+{%block content%}
+<div class="container">
+<div class="jumbotron">
+  <legend style=color:maroon;>MY CART</legend>
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr class="text-white" style=background-color:forestgreen;>
+<td>#</td>
+<td>Item</td>
+<td>Price</td>
+<td>quantity</td>
+<td>Total</td>
+<td>Action</td>
+      </tr>
+    </thead>
+    <tbody>
+      {%for sum in sum%}
+        {%for my_items in sum.items.all%}
+      <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{my_items.item.item_name}}</td>
+        <td>{%if my_items.item.discount_price%}
+          {{my_items.item.discount_price}}
+          {%else%}
+          {{my_items.item.price}}
+          {%endif%}
+        </td>
+        <td>
+          <a href="{%url 'business:remove_single' my_items.id%}"<i class="fa fa-minus fa-lg m-1"></i></a>
+          {{my_items.quantity}}
+          <a href="{%url 'business:add_to_cart' my_items.id%}"><i class="fa fa-plus fa-lg m-1"></i></a>
+        </td>
+        <td>{%if my_items.item.discount_price%}
+          {{my_items.Total_discount_price}} Saving Kshs<kbd class="m-1 p-1" style=background-color:dodgerblue;>{{my_items.Amount_saved}}</kbd>
+          {%else%}
+          {{my_items.Total_price}}
+          {%endif%}
+        </td>
+        <td>
+          <a href="{%url 'business:remove' my_items.id%}"><button class="btn btn-outline-danger">Delete</button></a>
+          </td>
+        </tr>
+        {%endfor%}
+        {%endfor%}
+        <tr>
+          <td colspan="5"><b>Total Price:</b></td>
+          {%for sum in sum%}
+          <td>
+            Kshs{{sum.Total_Final_price}}
+            </td>
+          {%endfor%}
+          </tr>
+          <tr >
+            <td colspan="5"></td>
+            <td class="float-right">
+              <a href="{%url 'business:product'%}"><button class="btn btn-outline-primary p-1 m-1">Continue Shopping</button></a>
+              <a href="{%url 'business:checkout'%}"><button class="btn btn-outline-success p-1 m-1">Proceed CheckOut</button></a>
+              </td>
+
+            </tr>
+      </tbody>
+  </table>
+  </div>
+  </div>
+{%endblock%}

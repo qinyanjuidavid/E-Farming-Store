@@ -1,0 +1,32 @@
+{%extends 'accounts/base.html'%}
+{%block content%}
+<div class="body p-4">
+  <div class="container-fluid" align=center>
+      <legend align=center>E-Farming Products.</legend>
+      <hr style=background-color:lime;>
+      <div class="row">
+        {%for item in item_obj%}
+
+        <div class="card col-sm-2 p-1 m-2  border-success" style=background-color:lavender; align=center>
+          <img src="{{item.image.url}}" height="290" alt="E-farming">
+          <div class="item" style=color:navy;>
+            <b>{{item.item_name}}</b>
+            </div>
+            <div class="category">
+              {{item.category}}
+              </div>
+            <div class="price p-2">
+              {%if item.discount_price%}
+              <kbd class="m-1 p-2" style=background-color:dodgerblue;>{{item.discount_price}}</kbd><kbd class="p-2 m-1" style=background-color:violet;> <del>{{item.price}}</del></kbd>
+              {%else%}
+              <kbd style=background-color:dodgerblue;>{{item.price}}</kbd>
+              {%endif%}
+              </div>
+              <a href="{%url 'business:details' item.id%}"><button class="btn btn-success col-sm-12">View Product</button></a>
+</div>
+
+{%endfor%}
+</div>
+</div>
+</div>
+{%endblock%}
